@@ -17,7 +17,7 @@ namespace ApusCookBook
         {
             //Array object with the size equal to 
             //maxNumOfElements. Array elements will still be null
-            Recipe[] Recipelist = new Recipe[maxNumofElements];
+            Recipelist = new Recipe[maxNumofElements];
 
             for (int index = 0; index < maxNumofElements; index++)
                 Recipelist[index] = null;
@@ -49,8 +49,8 @@ namespace ApusCookBook
             if (index >= 0)
             {
                 Recipe recipe = new Recipe(ingredientsArray.Length);
-                recipe.Name = name;
-                recipe.Ingredients = ingredientsArray;
+                recipe.NameOfRecipe = name;
+                recipe.RecipeIngredients = ingredientsArray;
                 recipe.Category = category;
 
                 Recipelist[index] = recipe;
@@ -67,7 +67,7 @@ namespace ApusCookBook
             {
                 Recipelist[index] = recipe;
 
-                return true;
+                return ok;
             }
             return false;
         }
@@ -119,7 +119,7 @@ namespace ApusCookBook
             int y = 0;
             for (index = 0; index < Recipelist.Length; index++)
             {
-                if (Recipelist[index].Equals(string.Empty))
+                if (!Recipelist[index].Equals(string.Empty))
                 {
                     stringreds[y] = string.Format("{0 -15}", Recipelist[index]);
                     y++;

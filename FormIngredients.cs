@@ -17,13 +17,13 @@ namespace ApusCookBook
 
         public FormIngredients(Recipe recipe)
         {
-           
+            //Recipe recp = new Recipe(maxNumOfIngredients);
             InitializeComponent();
            m_recipe = recipe;
-             if (string.IsNullOrEmpty(recipe.Name))
+             if (string.IsNullOrEmpty(recipe.NameOfRecipe))
                 this.Text = "No Recipe Name";
             else
-            this.Text =  recipe.Name + "Add Ingredients";
+            this.Text =  recipe.NameOfRecipe + "Add Ingredients";
             InitializeGUI();
             
         }
@@ -48,8 +48,8 @@ namespace ApusCookBook
         public void InitializeGUI()
         {
             //Create Ingredientlist in the object recipe
-            if (m_recipe.Ingredients == null)
-                m_recipe.Ingredients = new string[m_recipe.maxNumOfIngredients];
+            if (m_recipe.RecipeIngredients == null)
+                m_recipe.RecipeIngredients = new string[m_recipe.MaxIngredients];
             lstIgredients.Items.Clear();
             toolTip1.SetToolTip(txtIgredient, "Example: 2 dl milk");
             lblMaxNum.Text = m_recipe.CurrentNumOfIngredients().ToString();
@@ -62,8 +62,24 @@ namespace ApusCookBook
 
         private void btnAddIngr_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(recipe))
-                string[] addingvalue = new string
+            lstIgredients.Items.Clear();
+            
+           if (string.IsNullOrEmpty(txtIgredient.Text))
+            {
+                string[] addingvalue = new string ;
+                InitializeGUI();
+                lstIgredients.Items.Add(txtIgredient.Text);
+            }
+
+
+            
+               // txtIgredient.Text = "";
+               
+               
+                
+            
+                
+                
         }
 
         private void FormIngredients_Load(object sender, EventArgs e)
@@ -72,6 +88,11 @@ namespace ApusCookBook
         }
 
         private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
         {
 
         }
